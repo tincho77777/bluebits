@@ -1,14 +1,33 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
-import { RouterModule } from '@angular/router';
+
+import { RouterModule, Routes } from '@angular/router';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ShellComponent } from './shared/shell/shell.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
+
+import { defineLordIconElement } from 'lord-icon-element';
+import  lottie  from 'lottie-web';
+
+const routes: Routes = [
+    { path: '', 
+    component: ShellComponent, 
+    children: [
+        { path: 'dashboard', component: DashboardComponent}
+    ] }
+];
 
 @NgModule({
-    declarations: [AppComponent, NxWelcomeComponent],
-    imports: [BrowserModule, RouterModule.forRoot([], { initialNavigation: 'enabledBlocking' })],
+    declarations: [AppComponent, DashboardComponent, ShellComponent, SidebarComponent],
+    imports: [BrowserModule, RouterModule.forRoot(routes, { initialNavigation: 'enabledBlocking' })],
     providers: [],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule {}
+export class AppModule { 
+    constructor() {
+        defineLordIconElement(lottie.loadAnimation);
+}
+}
