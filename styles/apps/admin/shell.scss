@@ -1,0 +1,71 @@
+.admin{
+    &-wrapper{
+        height: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    &-main{
+        width: calc(100% - 185px); //el calculo del 100% menos los 185px de la sidebar
+        margin-left: 185px;
+    }
+
+    &-sidebar{
+        position: fixed;
+        width: 185px;
+        background-color: #dee2e6;
+        height: 100%;
+        top: 0;
+
+        .logo{
+            width: 100%;
+            margin-bottom: 0;
+
+            .img{
+                max-width: 100%;
+            }
+        }
+
+        .links{
+            
+            ul{
+                margin: 0;
+                padding: 0;
+
+                li{
+                    display: block;
+                    list-style: none;
+                    width: 100%;
+
+                    a{
+                        display: block;
+                        width: 100%;
+                        text-decoration: none; //con esto hago que los links no sean azules
+                        color: black;
+
+                        &:hover{
+                            background-color: #bbbbbb;
+                        }
+
+                        i{
+                            margin-right: 8px;
+                            margin-top: 0;
+                            float: left;
+                        }
+
+                        &.logout{
+                            color: #e88c30;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &-page{
+        padding: 20px;
+        width: calc(100% - 185px);
+        float: right;
+
+    }
+}

@@ -1,0 +1,57 @@
+<!-- mensaje push de que la categoria se creo -->
+<p-toast></p-toast> 
+<div class="admin-page">
+    <!-- aca usamos una union en dos direcciones con operadores ternarios para decir: si estas en modo -->
+    <!-- agregar categoria mostra este titulo, si estas en editar mostra este otro titulo -->
+    <!-- aca dice si tengo el editmode=true mostrame este titulo, si no mostra el add category -->
+    <p-card 
+        [header]="editmode ? 'Edit Category' : 'Add Category' " 
+        [subheader]="editmode ? 'You can edit a categories here' : 'You can add categories here' ">
+
+        <div class="p-grid mb-5">
+            <div class="p-col-12">
+                <p-toolbar>
+                    <div class="p-toolbar-group-left"></div>
+                    <div class="p-toolbar-group-right">
+                        <!-- boton de crear o actualizar una categoria -->
+                        <p-button 
+                        [label]="editmode ? 'Update' : 'Create' " 
+                        icon="pi pi-plus" 
+                        styleClass="p-button-primary mr-2" 
+                        (click)="onSubmit()">
+                        </p-button>
+
+                        <p-button 
+                        label="Cancel" 
+                        icon="pi pi-arrow-circle-left" 
+                        styleClass="p-button-secondary"
+                        ></p-button>
+                    </div> 
+                </p-toolbar>
+            </div>
+        </div>
+
+        <div class="p-grid">
+            <div class="p-col-12">
+                <form [formGroup]="form">  <!-- aca usamos reactive forms -->
+                    <div class="card">
+                        <div class="formgrid grid">
+                            <div class="field col">
+                                <label for="name">Name</label> <!-- el formControlName tiene que llevar el mismo nombre que definimos en el archivo ts,esto los une -->
+                                <input formControlName="name" id="name" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                                <small *ngIf="categoryForm.name.invalid && isSubmitted" class="p-error">Name is required</small>
+                            </div> 
+                            <div class="field col">
+                                <label for="icon">Icon</label>
+                                <input formControlName="icon" id="icon" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                                <small *ngIf="categoryForm.icon.invalid && isSubmitted" class="p-error">Icon is required</small> <!-- el *ngIf hace q cuando el formulario es invalido que salga el mensaje de requerido -->
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </p-card>
+</div>
+
