@@ -3,9 +3,10 @@ import { CategoriesService } from '../../../../../../libs/products/src/lib/servi
 import { Category } from 'libs/products/src/lib/models/category';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
+import { environment } from '@env/environment';
 
 @Component({
-  selector: 'bluebits-categories-list',
+  selector: 'admin-categories-list',     //'bluebits-categories-list'
   templateUrl: './categories-list.component.html',
   styles: [
   ]

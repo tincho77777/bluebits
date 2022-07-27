@@ -9,14 +9,14 @@ import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
-  selector: 'bluebits-categories-form',
+  selector: 'admin-categories-form',    //'bluebits-categories-form'
   templateUrl: './categories-form.component.html',
   styleUrls: ['./categories-form.component.css']
 })
 export class CategoriesFormComponent implements OnInit {
   //Siempre declarar las variables globales antes del constructor
   form: FormGroup;
-  isSubmitted: boolean = false;
+  isSubmitted = false;
   editmode = false;
   currentCategoryID: string;
 
@@ -31,6 +31,7 @@ export class CategoriesFormComponent implements OnInit {
     this.form = this.formBuilder.group({  // por defecto es un array vacio
       name: ['', Validators.required], //la libreria Validators nos permite hacer la validacion required para que no se envie vacio el campo
       icon: ['', Validators.required],
+      color: ['#fff']
     });
 
     this._checkEditMode();
@@ -45,7 +46,8 @@ export class CategoriesFormComponent implements OnInit {
     const category: Category = {
       id: this.currentCategoryID,
       name: this.categoryForm.name.value,
-      icon: this.categoryForm.icon.value
+      icon: this.categoryForm.icon.value,
+      color: this.categoryForm.color.value
     };
 
     if(this.editmode){
@@ -53,6 +55,10 @@ export class CategoriesFormComponent implements OnInit {
     }else{
       this._addCategory(category);
     }
+  }
+
+  onCancel(){
+    this.location.back();
   }
 
   //metodo para crear una categoria
@@ -64,7 +70,7 @@ export class CategoriesFormComponent implements OnInit {
           summary: 'Success',
           detail: `Category ${category.name} is created!`
       });
-      timer(2000)
+      timer(1000)
         .toPromise()
         .then(() => {
           this.location.back();
@@ -89,7 +95,7 @@ export class CategoriesFormComponent implements OnInit {
           summary: 'Success',
           detail: `Category ${category.name} is updated!`
         });
-        timer(2000)
+        timer(1000)
           .toPromise()
           .then(() => {
             this.location.back();
@@ -114,6 +120,7 @@ export class CategoriesFormComponent implements OnInit {
         this.categoriesService.getCategory(params.id).subscribe( category => {
           this.categoryForm.name.setValue(category.name);
           this.categoryForm.icon.setValue(category.icon);
+          this.categoryForm.color.setValue(category.color);
         })
       }
     })

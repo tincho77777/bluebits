@@ -27,6 +27,8 @@ import {InputTextModule} from 'primeng/inputtext';
 import {ToastModule} from 'primeng/toast';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ColorPickerModule} from 'primeng/colorpicker';
+import { ProductsListComponent } from './pages/products/products-list/products-list.component';
 
 
 
@@ -40,6 +42,7 @@ const UX_MODULE = [  //modulo de visuales, ponemos todos aca y reemplazamos en i
     InputTextModule,
     ToastModule,
     ConfirmDialogModule,
+    ColorPickerModule,
 ]
 
 const routes: Routes = [
@@ -60,7 +63,7 @@ const routes: Routes = [
         ShellComponent, 
         SidebarComponent, 
         CategoriesListComponent, 
-        CategoriesFormComponent],
+        CategoriesFormComponent, ProductsListComponent],
     imports: [
         BrowserModule, 
         RouterModule.forRoot(routes, { initialNavigation: 'enabledBlocking' }), 
