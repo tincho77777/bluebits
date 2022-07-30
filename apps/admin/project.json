@@ -12,10 +12,10 @@
                 "main": "apps/admin/src/main.ts",
                 "polyfills": "apps/admin/src/polyfills.ts",
                 "tsConfig": "apps/admin/tsconfig.app.json",
-                "inlineStyleLanguage": "scss",
+                "inlineStyleLanguage": "scss",         
                 "assets": ["apps/admin/src/favicon.ico", "apps/admin/src/assets"],
-                "styles": ["apps/admin/src/styles.scss"],
-                "scripts": []
+                "styles": ["apps/admin/src/styles.scss","node_modules/quill/dist/quill.core.css","node_modules/quill/dist/quill.snow.css"],
+                "scripts": ["node_modules/quill/dist/quill.min.js"]
             },
             "configurations": {
                 "production": {

@@ -13,7 +13,7 @@
     &-sidebar{
         position: fixed;
         width: 185px;
-        background-color: #dee2e6;
+        background-color: #001D3D;
         height: 100%;
         top: 0;
 
@@ -41,10 +41,10 @@
                         display: block;
                         width: 100%;
                         text-decoration: none; //con esto hago que los links no sean azules
-                        color: black;
+                        color: white;
 
                         &:hover{
-                            background-color: #bbbbbb;
+                            background-color: #003566;
                         }
 
                         i{

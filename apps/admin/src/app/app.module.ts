@@ -13,6 +13,9 @@ import { CategoriesFormComponent } from './categories/categories-form/categories
 import { CategoriesService } from '../../../../libs/products/src/lib/services/categories.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProductsListComponent } from './pages/products/products-list/products-list.component';
+import { ProductsFormComponent } from './pages/products/products-form/products-form.component';
+
 
 //imports de los iconos interactivos
 import { defineLordIconElement } from 'lord-icon-element';
@@ -28,7 +31,11 @@ import {ToastModule} from 'primeng/toast';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ColorPickerModule} from 'primeng/colorpicker';
-import { ProductsListComponent } from './pages/products/products-list/products-list.component';
+import {InputNumberModule} from 'primeng/inputnumber';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+import {InputSwitchModule} from 'primeng/inputswitch';
+import {DropdownModule} from 'primeng/dropdown';
+import {EditorModule} from 'primeng/editor';
 
 
 
@@ -43,6 +50,11 @@ const UX_MODULE = [  //modulo de visuales, ponemos todos aca y reemplazamos en i
     ToastModule,
     ConfirmDialogModule,
     ColorPickerModule,
+    InputNumberModule,
+    InputTextareaModule,
+    InputSwitchModule,
+    DropdownModule,
+    EditorModule
 ]
 
 const routes: Routes = [
@@ -52,7 +64,10 @@ const routes: Routes = [
         { path: 'dashboard', component: DashboardComponent},
         { path: 'categories', component: CategoriesListComponent},
         { path: 'categories/form', component: CategoriesFormComponent},
-        { path: 'categories/form/:id', component: CategoriesFormComponent}
+        { path: 'categories/form/:id', component: CategoriesFormComponent},
+        { path: 'products', component: ProductsListComponent},
+        { path: 'products/form', component: ProductsFormComponent},
+        { path: 'products/form/:id', component: ProductsFormComponent}
     ] }
 ];
 
@@ -63,7 +78,7 @@ const routes: Routes = [
         ShellComponent, 
         SidebarComponent, 
         CategoriesListComponent, 
-        CategoriesFormComponent, ProductsListComponent],
+        CategoriesFormComponent, ProductsListComponent, ProductsFormComponent],
     imports: [
         BrowserModule, 
         RouterModule.forRoot(routes, { initialNavigation: 'enabledBlocking' }), 
