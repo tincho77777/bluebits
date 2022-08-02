@@ -15,6 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductsListComponent } from './pages/products/products-list/products-list.component';
 import { ProductsFormComponent } from './pages/products/products-form/products-form.component';
+import { UsersFormComponent } from './pages/users/users-form/users-form.component';
+import { UsersListComponent } from './pages/users/users-list/users-list.component';
 
 
 //imports de los iconos interactivos
@@ -36,6 +38,9 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {DropdownModule} from 'primeng/dropdown';
 import {EditorModule} from 'primeng/editor';
+import { TagModule } from 'primeng/tag';
+import {InputMaskModule} from 'primeng/inputmask';
+
 
 
 
@@ -54,7 +59,9 @@ const UX_MODULE = [  //modulo de visuales, ponemos todos aca y reemplazamos en i
     InputTextareaModule,
     InputSwitchModule,
     DropdownModule,
-    EditorModule
+    EditorModule,
+    TagModule,
+    InputMaskModule,
 ]
 
 const routes: Routes = [
@@ -67,7 +74,10 @@ const routes: Routes = [
         { path: 'categories/form/:id', component: CategoriesFormComponent},
         { path: 'products', component: ProductsListComponent},
         { path: 'products/form', component: ProductsFormComponent},
-        { path: 'products/form/:id', component: ProductsFormComponent}
+        { path: 'products/form/:id', component: ProductsFormComponent},
+        { path: 'users', component: UsersListComponent},
+        { path: 'users/form', component: UsersFormComponent},
+        { path: 'users/form/:id', component: UsersFormComponent}
     ] }
 ];
 
@@ -78,7 +88,11 @@ const routes: Routes = [
         ShellComponent, 
         SidebarComponent, 
         CategoriesListComponent, 
-        CategoriesFormComponent, ProductsListComponent, ProductsFormComponent],
+        CategoriesFormComponent,
+        ProductsListComponent, 
+        ProductsFormComponent, 
+        UsersFormComponent, 
+        UsersListComponent],
     imports: [
         BrowserModule, 
         RouterModule.forRoot(routes, { initialNavigation: 'enabledBlocking' }), 

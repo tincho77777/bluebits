@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import { ProductsService } from '../../../../../../../libs/products/src/lib/services/products.service';
 import { ProductsService } from '@bluebits/products';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
