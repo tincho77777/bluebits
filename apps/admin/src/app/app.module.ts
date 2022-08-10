@@ -1,18 +1,24 @@
+//modules
 import { NgModule, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { AppComponent } from './app.component';
-
+import { UsersModule } from '../../../../libs/users/src/lib/users.module';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+//services
+import { CategoriesService } from '../../../../libs/products/src/lib/services/categories.service';
+import { AuthGuard } from '../../../../libs/users/src/lib/services/auth-guard.service';
+import { JwtInterceptor } from '../../../../libs/users/src/lib/services/jwt.interceptor';
+
+//components
+import { AppComponent } from './app.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ShellComponent } from './shared/shell/shell.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { CategoriesListComponent } from './categories/categories-list/categories-list.component';
 import { CategoriesFormComponent } from './categories/categories-form/categories-form.component';
-import { CategoriesService } from '../../../../libs/products/src/lib/services/categories.service';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductsListComponent } from './pages/products/products-list/products-list.component';
 import { ProductsFormComponent } from './pages/products/products-form/products-form.component';
 import { UsersFormComponent } from './pages/users/users-form/users-form.component';
@@ -50,6 +56,10 @@ import {FieldsetModule} from 'primeng/fieldset';
 
 
 
+
+
+
+
 const UX_MODULE = [  //modulo de visuales, ponemos todos aca y reemplazamos en imports
     CardModule, 
     ToolbarModule,
@@ -72,6 +82,7 @@ const UX_MODULE = [  //modulo de visuales, ponemos todos aca y reemplazamos en i
 const routes: Routes = [
     { path: '', 
     component: ShellComponent, 
+    canActivate: [AuthGuard], //esto proteje todas las rutas de que entre alguien que no este logueado
     children: [
         { path: 'dashboard', component: DashboardComponent},
         { path: 'categories', component: CategoriesListComponent},
@@ -89,7 +100,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    declarations: [
+    declarations: [ //aca los componentes
         AppComponent,
         DashboardComponent, 
         ShellComponent, 
@@ -102,7 +113,7 @@ const routes: Routes = [
         UsersListComponent,
         OrdersListComponent, 
         OrdersDetailComponent],
-    imports: [
+    imports: [ //en los imports ser importan los modulos
         BrowserModule, 
         RouterModule.forRoot(routes, { initialNavigation: 'enabledBlocking' }), 
         ...UX_MODULE,
@@ -110,8 +121,10 @@ const routes: Routes = [
         FormsModule,
         ReactiveFormsModule,
         BrowserAnimationsModule,
+        UsersModule
     ],
-providers: [CategoriesService, MessageService, ConfirmDialogModule, ConfirmationService ],
+providers: [CategoriesService, MessageService, ConfirmDialogModule, ConfirmationService,  //aca los servicios
+{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true } ], 
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

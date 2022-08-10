@@ -5,7 +5,7 @@
     <div class="links" style="margin-top: 30px;">
         <ul>
             <li>
-                <a routerLink="/dashboard" >
+                <a routerLink="/" >
                     <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
                     <lord-icon 
                         src="https://cdn.lordicon.com/gmzxduhd.json"
@@ -26,7 +26,6 @@
                     style="width:70px;height:70px">
                 </lord-icon> Products
                 </a>
-                <!-- #121331 -->
             </li>
 
             <li>
@@ -66,7 +65,7 @@
             </li>
 
             <li>
-                <a class="logout">
+                <a class="logout" (click)="logoutUser()">
                 <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
                 <lord-icon 
                     src="https://cdn.lordicon.com/moscwhoj.json"

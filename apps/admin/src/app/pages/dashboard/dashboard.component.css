@@ -1,0 +1,26 @@
+.principal{
+    width: 100% 
+} 
+
+.d-item{
+    display: flex;
+    text-align: center;
+    color: white;
+    justify-content: space-between
+
+}
+
+.pi{
+    font-size: 4em;
+    margin-bottom: 15px;
+}
+
+.name{
+    font-size: 1.4em;
+}
+
+.number{
+    font-size: 2.5em;
+    color: white;
+    margin-top: 60px;
+}

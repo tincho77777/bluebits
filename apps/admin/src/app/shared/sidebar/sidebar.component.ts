@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'libs/users/src/lib/services/auth.service';
 
 import { defineLordIconElement } from 'lord-icon-element';
 import  lottie  from 'lottie-web';
@@ -10,11 +11,15 @@ import  lottie  from 'lottie-web';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { 
+  constructor( private authService: AuthService) { 
     defineLordIconElement(lottie.loadAnimation);
   }
 
   ngOnInit(): void {
+  }
+
+  logoutUser(){
+    this.authService.logout();
   }
 
 }
