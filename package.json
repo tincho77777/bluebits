@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "~14.0.0",
     "@angular/router": "~14.0.0",
     "@nrwl/angular": "14.4.2",
+    "animate.css": "^4.1.1",
     "i18n-iso-countries": "^7.5.0",
     "lord-icon-element": "^3.4.2",
     "lottie-web": "^5.9.6",
